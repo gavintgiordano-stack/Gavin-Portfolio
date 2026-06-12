@@ -231,6 +231,19 @@
       cursor: pointer;
       position: relative;
       background: var(--tile-bg);
+      perspective: 600px;
+    }
+
+    #progress-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: var(--accent);
+      z-index: 200;
+      pointer-events: none;
+      transition: width 0.1s linear;
     }
 
     .reveal {
@@ -331,6 +344,8 @@
   </style>
 </head>
 <body>
+
+<div id="progress-line"></div>
 
 <nav>
   <button class="active" onclick="showYear('home', this)">Home</button>
@@ -472,6 +487,8 @@
   };
 
   // Build galleries
+  const canTilt = window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches;
+
   Object.entries(images).forEach(([year, files]) => {
     const gallery = document.getElementById('gallery-' + year);
     files.forEach((file, idx) => {
@@ -481,9 +498,36 @@
       item.style.transitionDelay = `${(idx % 3) * 0.12}s`;
       item.innerHTML = `<img src="${src}" alt="Ceramics piece ${idx + 1}" loading="lazy"><div class="overlay"></div>`;
       item.addEventListener('click', () => openLightbox(year, idx));
+
+      if (canTilt) {
+        const img = item.querySelector('img');
+        item.addEventListener('mousemove', e => {
+          const r = item.getBoundingClientRect();
+          if (!r.width || !r.height) return;
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          img.style.transition = 'transform 0.15s ease-out';
+          img.style.transform = `scale(1.06) rotateX(${(-y * 7).toFixed(2)}deg) rotateY(${(x * 7).toFixed(2)}deg)`;
+        });
+        item.addEventListener('mouseleave', () => {
+          img.style.transition = '';
+          img.style.transform = '';
+        });
+      }
+
       gallery.appendChild(item);
     });
   });
+
+  // Scroll progress line
+  const progressLine = document.getElementById('progress-line');
+  function updateProgress() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    progressLine.style.width = max > 0 ? (window.scrollY / max * 100) + '%' : '0%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
 
   // Staggered scroll reveal, replaying in both scroll directions —
   // items animate in past 15% visibility and reset once fully off-screen.
@@ -532,6 +576,7 @@
     document.getElementById(year).classList.add('active', dir);
     btn.classList.add('active');
     window.scrollTo({ top: 0 });
+    updateProgress();
   }
 
   // Lightbox
