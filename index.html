@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ceramics Portfolio</title>
+  <title>Gavin Giordano — Ceramics Portfolio</title>
+  <meta name="description" content="Wheel-thrown ceramics by Gavin Giordano — three years of functional forms, glaze experimentation, and expressive vessels.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Share preview — YOUR-SITE-URL gets replaced with the real Netlify domain -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gavin Giordano — Ceramics Portfolio">
+  <meta property="og:description" content="Wheel-thrown ceramics across three years of study.">
+  <meta property="og:image" content="https://YOUR-SITE-URL/images/hero.jpg">
+  <meta property="og:url" content="https://YOUR-SITE-URL/">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -328,6 +338,7 @@
   <button onclick="showYear('freshman', this)">Freshman</button>
   <button onclick="showYear('sophomore', this)">Sophomore</button>
   <button onclick="showYear('junior', this)">Junior</button>
+  <button onclick="showYear('senior', this)">Senior</button>
   <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">&#9790;</button>
 </nav>
 
@@ -375,6 +386,14 @@
   </div>
 </section>
 
+<!-- Senior -->
+<section id="senior" class="year-section">
+  <div class="section-header">
+    <h2>Senior Year</h2>
+    <p class="blurb">Coming 2027. The wheel is still spinning.</p>
+  </div>
+</section>
+
 <!-- Lightbox -->
 <div id="lightbox">
   <button class="lb-close" onclick="closeLightbox()">&#x2715;</button>
@@ -388,61 +407,61 @@
   const images = {
     freshman: [
       // row 1 — squat/rounded vessels
-      "042D89D5-F2A2-44FD-80CE-81F766E65115.png",
-      "128D9D62-23E6-47EE-9FFD-7E1303B6772B.png",
-      "1316C30E-C22A-46E7-A102-D161E9B70C17.png",
+      "042D89D5-F2A2-44FD-80CE-81F766E65115.jpg",
+      "128D9D62-23E6-47EE-9FFD-7E1303B6772B.jpg",
+      "1316C30E-C22A-46E7-A102-D161E9B70C17.jpg",
       // row 2 — three bowls
-      "0E4C191D-1E71-4902-9FC5-847DA0C6931D.png",
-      "AC125DA1-E25F-44B0-BA23-DA6D798D45D1.png",
-      "D5480021-59D9-4771-94CB-6DB4AB429364.png",
+      "0E4C191D-1E71-4902-9FC5-847DA0C6931D.jpg",
+      "AC125DA1-E25F-44B0-BA23-DA6D798D45D1.jpg",
+      "D5480021-59D9-4771-94CB-6DB4AB429364.jpg",
       // row 3 — cylindrical cups
-      "450B2A76-9249-40FD-B273-A651E5219E6C.png",
-      "4D24AB38-5DAC-43F4-BC16-FB277A64E340.png",
-      "ADA8F9AF-30F3-45BD-A120-EFCA4684E5EC.png"
+      "450B2A76-9249-40FD-B273-A651E5219E6C.jpg",
+      "4D24AB38-5DAC-43F4-BC16-FB277A64E340.jpg",
+      "ADA8F9AF-30F3-45BD-A120-EFCA4684E5EC.jpg"
     ],
     sophomore: [
       // row 1 — three lidded vessels
-      "2A1B6F17-C7AE-447E-B37D-5A47953ECA3C.png",
-      "66B17F1B-86CF-44CA-8390-357629E49F1C.png",
-      "A94F2E60-C349-4EA0-96E4-1A4F8672325A.png",
+      "2A1B6F17-C7AE-447E-B37D-5A47953ECA3C.jpg",
+      "66B17F1B-86CF-44CA-8390-357629E49F1C.jpg",
+      "A94F2E60-C349-4EA0-96E4-1A4F8672325A.jpg",
       // row 2 — mixed: blue bowl, brown bowl, blue bowl
-      "092EC436-63B1-4705-9DAF-CC940E2A1B64.png",
-      "B7897136-CCA3-4D5F-B778-A36885321850.png",
-      "4637AF84-6FBC-4B67-999F-385BC1687425.png",
+      "092EC436-63B1-4705-9DAF-CC940E2A1B64.jpg",
+      "B7897136-CCA3-4D5F-B778-A36885321850.jpg",
+      "4637AF84-6FBC-4B67-999F-385BC1687425.jpg",
       // row 3 — mixed: blue vessel, dark bowl, blue vessel
-      "52DEB06A-8926-4222-A03D-D310092E49CD.png",
-      "EC9CE9F1-0A96-4E02-A2EA-B90C59BE1792.png",
-      "E6598D97-9B91-4E01-8531-F560E630FAFF.png",
+      "52DEB06A-8926-4222-A03D-D310092E49CD.jpg",
+      "EC9CE9F1-0A96-4E02-A2EA-B90C59BE1792.jpg",
+      "E6598D97-9B91-4E01-8531-F560E630FAFF.jpg",
       // row 4 — mixed: blue bowl, amber vessel, dark cup
-      "7AB06BDB-A91B-462E-AA21-C230C8008EA4.png",
-      "F77962BA-2487-4F24-9174-BDC0999DF0F0.png",
-      "302D9857-22D0-4512-99EA-A3F46F62D97B.png"
+      "7AB06BDB-A91B-462E-AA21-C230C8008EA4.jpg",
+      "F77962BA-2487-4F24-9174-BDC0999DF0F0.jpg",
+      "302D9857-22D0-4512-99EA-A3F46F62D97B.jpg"
     ],
     junior: [
       // row 1 — three bronze/rusted lidded vessels
-      "0B4692AC-9781-46E5-A445-C3333882BE83.png",
-      "4CC23DE7-C7D2-4ADB-B3FF-7E98F3886E98.png",
-      "16AFFAD0-D6A9-49F7-B4F5-2A928F2E8D2A.png",
+      "0B4692AC-9781-46E5-A445-C3333882BE83.jpg",
+      "4CC23DE7-C7D2-4ADB-B3FF-7E98F3886E98.jpg",
+      "16AFFAD0-D6A9-49F7-B4F5-2A928F2E8D2A.jpg",
       // row 2 — dark ribbed cups
-      "0D54E772-6E3B-46BE-8D24-EBD27ABE549C.png",
-      "24A30045-AAC7-4DCF-85AC-BB4C8FCFB6CD.png",
-      "FB5B52C3-03F3-40B3-ABF4-70B1E0B5DCFC.png",
+      "0D54E772-6E3B-46BE-8D24-EBD27ABE549C.jpg",
+      "24A30045-AAC7-4DCF-85AC-BB4C8FCFB6CD.jpg",
+      "FB5B52C3-03F3-40B3-ABF4-70B1E0B5DCFC.jpg",
       // row 3 — cream/tan cups
-      "077182B3-5B92-4000-9FFC-A80498C37181.png",
-      "8D138FDC-F39C-4EF7-A798-064FCCC1BBC0.png",
-      "F04FD9C4-8E33-4F25-B400-78EE55A23E4F.png",
+      "077182B3-5B92-4000-9FFC-A80498C37181.jpg",
+      "8D138FDC-F39C-4EF7-A798-064FCCC1BBC0.jpg",
+      "F04FD9C4-8E33-4F25-B400-78EE55A23E4F.jpg",
       // row 4 — cream with pink/oxblood splashes
-      "A3820BF9-4140-40AF-AD84-9891A050369C.png",
-      "9089946D-FF08-4672-87F7-FC728D19293F.png",
-      "FFA606C2-D710-4A67-A0BB-E314CB5BD450.png",
+      "A3820BF9-4140-40AF-AD84-9891A050369C.jpg",
+      "9089946D-FF08-4672-87F7-FC728D19293F.jpg",
+      "FFA606C2-D710-4A67-A0BB-E314CB5BD450.jpg",
       // row 5 — purple/dark
-      "74CCEA22-EF4F-4C35-A05B-95EFC33303DE.png",
-      "C0AC83F2-C643-46C9-A121-38210CF30158.png",
-      "FD3B6B1C-C31D-4984-B699-C160C0D65C9B.png",
+      "74CCEA22-EF4F-4C35-A05B-95EFC33303DE.jpg",
+      "C0AC83F2-C643-46C9-A121-38210CF30158.jpg",
+      "FD3B6B1C-C31D-4984-B699-C160C0D65C9B.jpg",
       // row 6 — remaining
-      "6726F93E-2D4E-4D1E-919B-33A72BF5B80D.png",
-      "1444C66C-625B-4D20-B5B1-EFE15C959923.png",
-      "7CD97EBF-32EE-4733-8337-ADE0C66A7352.png"
+      "6726F93E-2D4E-4D1E-919B-33A72BF5B80D.jpg",
+      "1444C66C-625B-4D20-B5B1-EFE15C959923.jpg",
+      "7CD97EBF-32EE-4733-8337-ADE0C66A7352.jpg"
     ]
   };
 
@@ -502,7 +521,7 @@
   updateThemeIcon();
 
   // Year tab switching — slides forward or back along the timeline
-  const tabOrder = ['home', 'freshman', 'sophomore', 'junior'];
+  const tabOrder = ['home', 'freshman', 'sophomore', 'junior', 'senior'];
   let currentTab = 'home';
 
   function showYear(year, btn) {
