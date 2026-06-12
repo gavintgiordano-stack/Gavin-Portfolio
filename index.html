@@ -167,11 +167,11 @@
 
     .year-section.active { display: block; }
 
-    .year-section.slide-fwd { animation: slideFwd 0.4s ease; }
-    .year-section.slide-back { animation: slideBack 0.4s ease; }
+    .year-section.slide-fwd { animation: slideFwd 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .year-section.slide-back { animation: slideBack 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
 
-    @keyframes slideFwd { from { opacity: 0; transform: translateX(48px); } to { opacity: 1; transform: none; } }
-    @keyframes slideBack { from { opacity: 0; transform: translateX(-48px); } to { opacity: 1; transform: none; } }
+    @keyframes slideFwd { from { opacity: 0; transform: translateX(72px); } to { opacity: 1; transform: none; } }
+    @keyframes slideBack { from { opacity: 0; transform: translateX(-72px); } to { opacity: 1; transform: none; } }
 
     .section-header {
       text-align: center;
@@ -469,20 +469,22 @@
     });
   });
 
-  // Staggered scroll reveal — falls back to showing everything
-  // if the browser can't report a usable viewport
+  // Staggered scroll reveal, replaying in both scroll directions —
+  // items animate in past 15% visibility and reset once fully off-screen.
+  // Falls back to showing everything if the browser can't report a usable viewport.
   const revealEls = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window) || window.innerHeight === 0) {
     revealEls.forEach(el => el.classList.add('in-view'));
   } else {
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.15) {
           entry.target.classList.add('in-view');
-          revealObserver.unobserve(entry.target);
+        } else if (!entry.isIntersecting) {
+          entry.target.classList.remove('in-view');
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: [0, 0.15] });
     revealEls.forEach(el => revealObserver.observe(el));
   }
 
