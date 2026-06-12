@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Gavin Giordano Ceramics</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f5f0eb;
+      --heading: #1e1a17;
+      --muted: #7a6450;
+      --accent: #c4a06e;
+    }
+
+    body.dark {
+      --bg: #181410;
+      --heading: #ede4d8;
+      --muted: #a89070;
+      --accent: #d4af7a;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      gap: 8px;
+    }
+
+    svg { margin-bottom: 24px; }
+
+    h1 {
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--heading);
+    }
+
+    p {
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 28px;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 12px 32px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    a:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+  </style>
+</head>
+<body>
+
+<svg width="140" height="140" viewBox="0 0 32 32" aria-hidden="true">
+  <path d="M10 7 C10 9, 12 10, 12 12 C12 14, 9 15, 9 19 C9 23.5, 12 26, 16 26 C20 26, 23 23.5, 23 19 C23 15, 20 14, 20 12 C20 10, 22 9, 22 7 L19.5 7 C19.5 8.5, 18 9.5, 18 12 L14 12 C14 9.5, 12.5 8.5, 12.5 7 Z" fill="var(--accent)"/>
+  <polyline points="15,7.5 16.5,11 14.5,14.5 16.5,18 15,21.5 16.5,25.5" fill="none" stroke="var(--bg)" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>
+
+<h1>This page didn't survive the kiln</h1>
+<p>404 — it cracked somewhere in the firing.</p>
+
+<a href="/">Back to the gallery</a>
+
+<script>
+  if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+</script>
+
+</body>
+</html>
